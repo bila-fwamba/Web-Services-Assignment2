@@ -1,6 +1,4 @@
-import {Mockgoose} from 'mockgoose';
-import {nodeEnv}  from './config';
-export const server = express(); //replaces the previous server declaration
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -19,23 +17,14 @@ var routes = require('./routes/index');
 var userRoutes = require('./routes/user');
 var app = express();
 
-if (nodeEnv == 'test'){
+//if (nodeEnv == 'test'){
 //use mockgoose for testing
-  var mockgoose = new Mockgoose(mongoose); 
-  mockgoose.prepareStorage().then(()=>{
-  mongoose.connect('localhost:27017/onlineshopping');
-  });
-}
-else
-{
+ // var mockgoose = new Mockgoose(mongoose); 
+ // mockgoose.prepareStorage().then(()=>{
+ // mongoose.connect('localhost:27017/onlineshopping');
+ // });
 //use real deal for everything else
 mongoose.connect('localhost:27017/onlineshopping');
-}
-mongoose.connection.on('error', function(err) {
-  console.error('MongoDB connection error: '+ err);
-  process.exit(-1);
-});
-
 require('./config/passport');
 
 // view engine setup

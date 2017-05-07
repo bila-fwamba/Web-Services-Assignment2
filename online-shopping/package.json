@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-  "start": "cross-env NODE_ENV=development nodemon --ignore hackerNews/* --exec babel-node server.js",
-  "test": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register"
+  "start": "node ./bin/www"
 },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
